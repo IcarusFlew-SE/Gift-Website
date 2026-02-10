@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iridiscent Love ~ For Valentine's</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- BGM -->
+    <div class="music">
+        <button id="musicToggle" class="music-btn">
+            <span id="play-icon">♪</span>
+            <span id="pause-icon" style="display: none;">❚❚</span>
+        </button>
+        <audio id="bgm-audio" loop>
+            <source src="assets\Jeremy Zucker & Chelsea Cutler - this is how you fall in love (Official Music Video).mp3" type="audio/mp3">
+        </audio>
+        <span class="music-label">Background Music</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">Happy Valentine's Day</div>
+        <div class="nav-links">
+            <button onclick="showPage('home')" class="nav-btn active"> 
+                <span class="icon">🏠</span>Home</button>
+            <button onclick="showPage('flower')" class="nav-btn"> 
+                <span class="icon">🌹</span>Flowers</button>
+            <button onclick="showPage('photos')" class="nav-btn"> 
+                <span class="icon">📷</span>Our Photos</button>
+            <button onclick="showPage('letter')" class="nav-btn"> 
+                <span class="icon">💌</span>Letter</button>
+        </div>   
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active-page">
+        <div class="home-container">
+            <div class="floating-hearts">
+                <div class="float-heart">❤️</div>
+                <div class="float-heart">💕</div>
+                <div class="float-heart">💖</div>
+                <div class="float-heart">💗</div>
+                <div class="float-heart">💝</div>
+            </div>
+            <h1 class="main-title">Our Intertwined Hearts</h1>
+            <div class="subtitle">A Valentine's Day</div>
+            <div class="magic-card">
+                <div class="welcome-text">
+                    <p>Explore our moments through letter, photos and moments we've shared together.</p>
+                    <div class="heart-divider">
+                        <span>❤️</span>
+                        <span>💕</span>
+                        <span>❤️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Letter Page -->
+    <div id="letter" class="page">
+        <div class="page-title">My Letter to You</div>
+        <div class="envelope-wrapper">
+            <div id="envelope" class="close">
+                <div class="front flap"></div>
+                <div class="front pocket"></div>
+                <div class="letter">
+                    <div class="letter-header">
+                        <div class="words line1">To My Beloved ❤️</div>
+                        <div class="letter-date">Valentine's Day 2026</div>
+                    </div>
+                    <div class="letter-body">
+                        <div class="words line2">My Dearest,</div>
+                        <div class="words line3">Your presence in my life is a gift I treasure,</div>
+                        <div class="words line4">May you always be beautiful and our hearts always entwined.</div>
+                    </div>
+                </div>
+                <div class="hearts">
+                    <div class="heart a1"></div>
+                    <div class="heart a2"></div>
+                    <div class="heart a3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="letter-controls">
+            <button id="open" class="letter-btn open-btn">
+                <span>✉️ Open Letter</span>
+            </button>
+            <button id="reset" class="letter-btn reset-btn">
+                <span>📥 Close Letter</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Photos -->
+    <div id="photos" class="page">
+        <div class="page-title">Our Album</div>
+
+    <!-- Album -->
+    <div class="album-controls">
+        <button class="album-btn" id="prev" disabled>
+            <span class="btn-icon">◀</span>
+            <span class="btn-text">Previous</span>
+        </button>
+        <div class="page-indicator">
+            <span class="current-page">1</span> / <span class="total-pages">3</span>
+        </div>
+        <button class="album-btn" id="nextPage">
+            <span class="btn-text">Next</span>
+            <span class="btn-icon">▶</span>
+        </button>
+    </div>
+
+    <!-- Album -->
+    <div class="album-book">
+        <div class="album-spine"></div>
+
+        <div class="album-page active" data-page="1">
+            <div class="page-left">
+                <div class="polaroid" data-photo="1">
+                    <div class="polaroid-photo">
+                        <div class="photo-placeholder">
+                            <div class="placeholder-icon">📷</div>
+                            <div class="placeholder-text">Photo 1</div>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Under the Moonlight</div>
+                </div>
+                <div class="polaroid" data-page="2">
+                    <div class="polaroid-photo">
+                        <div class="photo-placeholder">
+                            <div class="placeholder-icon">📷</div>
+                            <div class="placeholder-text">Photo 2</div>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">A Walk in the Park</div>
+                </div>
+                <div class="polaroid" data-photo="3">
+                    <div class="polaroid-photo">
+                        <div class="photo-placeholder">
+                            <div class="placeholder-icon">📷</div>
+                            <div class="placeholder-text">Photo 3</div>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Sand, sun, and smiles</div>
+                </div>
+                <div class="polaroid" data-photo="4">
+                    <div class="polaroid-photo">
+                        <div class="photo-placeholder">
+                            <div class="placeholder-icon">📷</div>
+                            <div class="placeholder-text">Photo 4</div>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Restaurant</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- View Modes -->
+     <div class="view-modes">
+        <button class="view-btn active" data-view="album" title="Album View">
+            <span class="view-icon">📖</span>
+            <span class="view-label">Album View</span>
+        </button>
+
+        <button class="view-btn" data-view="grid" title="Grid View">
+            <span class="view-icon">▦</span>
+            <span class="view-label">Grid View</span>
+        </button>
+
+        <button class="view-btn" data-view="slideshow" title="Slideshow">
+            <span class="view-icon">▶</span>
+            <span class="view-label">Slideshow</span>
+        </button>
+     </div>
+
+     <div class="grid-view" style="display: none;">
+        <div class="grid-gallery"></div>
+     </div>
+
+     <div class="slideshow-view" style="display: none;">
+        <div class="slideshow-container">
+            <div class="slideshow-photo"></div>
+            <div class="slideshow-caption"></div>
+            <button class="slideshow-prev">Previous</button>
+            <button class="slideshow-next">Next</button>
+            <button class="slideshow-play">▶</button>
+        </div>
+     </div>
+
+    <!-- Flowers Page -->
+    <div id="flowers" class="page">
+        <div class="page-title">A Bouquet for You</div>
+        <div class="flowers-container">
+            <div class="flower-animation">
+                <div class="flower rose">🌹</div>
+                <div class="flower tulip">🌷</div>
+                <div class="flower rose">🌹</div>
+                <div class="flower sunflower">🌻</div>
+                <div class="flower rose">🌹</div>
+                <div class="flower cherry">🌸</div>
+                <div class="flower rose">🌹</div>
+            </div>
+            <div class="flower-message">
+                <h2>Flowers For Our Love</h2>
+                <p></p>
+                <button class="bloom-btn" onclick="bloomFlowers()">💐 Make Them Bloom</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+</body>
+</html>
