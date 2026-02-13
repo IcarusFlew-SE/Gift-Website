@@ -16,11 +16,11 @@
     <!-- BGM -->
     <div class="music">
         <button id="musicToggle" class="music-btn">
-            <span id="play-icon">♪</span>
-            <span id="pause-icon" style="display: none;">❚❚</span>
+            <span class="play-icon">♪</span>
+            <span class="pause-icon" style="display: none;">❚❚</span>
         </button>
         <audio id="bgm-audio" loop>
-            <source src="assets\Jeremy Zucker & Chelsea Cutler - this is how you fall in love (Official Music Video).mp3" type="audio/mp3">
+            <source src="assets/Jeremy Zucker & Chelsea Cutler - this is how you fall in love (Official Music Video).mp3" type="audio/mp3">
         </audio>
         <span class="music-label">Background Music</span>
     </div>
@@ -29,14 +29,10 @@
     <nav class="navbar">
         <div class="nav-brand">Happy Valentine's Day</div>
         <div class="nav-links">
-            <button onclick="showPage('home')" class="nav-btn active"> 
-                <span class="icon">🏠</span>Home</button>
-            <button onclick="showPage('flower')" class="nav-btn"> 
-                <span class="icon">🌹</span>Flowers</button>
-            <button onclick="showPage('photos')" class="nav-btn"> 
-                <span class="icon">📷</span>Our Photos</button>
-            <button onclick="showPage('letter')" class="nav-btn"> 
-                <span class="icon">💌</span>Letter</button>
+            <button onclick="showPage('home')" class="nav-btn active" data-page="home">🏠 Home</button>
+            <button onclick="showPage('flowers')" class="nav-btn" data-page="flowers">🌹 Flowers</button>
+            <button onclick="showPage('photos')" class="nav-btn" data-page="photos">📷 Our Photos</button>
+            <button onclick="showPage('letter')" class="nav-btn" data-page="letter">💌 Letter</button>
         </div>   
     </nav>
 
@@ -100,104 +96,6 @@
         </div>
     </div>
 
-    <!-- Photos -->
-    <div id="photos" class="page">
-        <div class="page-title">Our Album</div>
-
-    <!-- Album -->
-    <div class="album-controls">
-        <button class="album-btn" id="prev" disabled>
-            <span class="btn-icon">◀</span>
-            <span class="btn-text">Previous</span>
-        </button>
-        <div class="page-indicator">
-            <span class="current-page">1</span> / <span class="total-pages">3</span>
-        </div>
-        <button class="album-btn" id="nextPage">
-            <span class="btn-text">Next</span>
-            <span class="btn-icon">▶</span>
-        </button>
-    </div>
-
-    <!-- Album -->
-    <div class="album-book">
-        <div class="album-spine"></div>
-
-        <div class="album-page active" data-page="1">
-            <div class="page-left">
-                <div class="polaroid" data-photo="1">
-                    <div class="polaroid-photo">
-                        <div class="photo-placeholder">
-                            <div class="placeholder-icon">📷</div>
-                            <div class="placeholder-text">Photo 1</div>
-                        </div>
-                    </div>
-                    <div class="polaroid-caption">Under the Moonlight</div>
-                </div>
-                <div class="polaroid" data-page="2">
-                    <div class="polaroid-photo">
-                        <div class="photo-placeholder">
-                            <div class="placeholder-icon">📷</div>
-                            <div class="placeholder-text">Photo 2</div>
-                        </div>
-                    </div>
-                    <div class="polaroid-caption">A Walk in the Park</div>
-                </div>
-                <div class="polaroid" data-photo="3">
-                    <div class="polaroid-photo">
-                        <div class="photo-placeholder">
-                            <div class="placeholder-icon">📷</div>
-                            <div class="placeholder-text">Photo 3</div>
-                        </div>
-                    </div>
-                    <div class="polaroid-caption">Sand, sun, and smiles</div>
-                </div>
-                <div class="polaroid" data-photo="4">
-                    <div class="polaroid-photo">
-                        <div class="photo-placeholder">
-                            <div class="placeholder-icon">📷</div>
-                            <div class="placeholder-text">Photo 4</div>
-                        </div>
-                    </div>
-                    <div class="polaroid-caption">Restaurant</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- View Modes -->
-     <div class="view-modes">
-        <button class="view-btn active" data-view="album" title="Album View">
-            <span class="view-icon">📖</span>
-            <span class="view-label">Album View</span>
-        </button>
-
-        <button class="view-btn" data-view="grid" title="Grid View">
-            <span class="view-icon">▦</span>
-            <span class="view-label">Grid View</span>
-        </button>
-
-        <button class="view-btn" data-view="slideshow" title="Slideshow">
-            <span class="view-icon">▶</span>
-            <span class="view-label">Slideshow</span>
-        </button>
-     </div>
-
-     <div class="grid-view" style="display: none;">
-        <div class="grid-gallery"></div>
-     </div>
-
-     <div class="slideshow-view" style="display: none;">
-        <div class="slideshow-container">
-            <div class="slideshow-photo"></div>
-            <div class="slideshow-caption"></div>
-            <button class="slideshow-prev">Previous</button>
-            <button class="slideshow-next">Next</button>
-            <button class="slideshow-play">▶</button>
-        </div>
-     </div>
-
     <!-- Flowers Page -->
     <div id="flowers" class="page">
         <div class="page-title">A Bouquet for You</div>
@@ -215,6 +113,181 @@
                 <h2>Flowers For Our Love</h2>
                 <p></p>
                 <button class="bloom-btn" onclick="bloomFlowers()">💐 Make Them Bloom</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photos Page -->
+    <div id="photos" class="page">
+        <h2 class="page-title">Our Photo Album</h2>
+        
+        <!-- Album Controls -->
+        <div class="album-controls">
+            <button class="album-btn" id="prevPage" disabled>
+                <span class="btn-icon">◀</span>
+                <span class="btn-text">Previous</span>
+            </button>
+            
+            <div class="page-indicator">
+                <span class="current-page">1</span> / <span class="total-pages">3</span>
+            </div>
+            
+            <button class="album-btn" id="nextPage">
+                <span class="btn-text">Next</span>
+                <span class="btn-icon">▶</span>
+            </button>
+        </div>
+
+        <!-- Album Book -->
+        <div class="album-book">
+            <div class="album-spine"></div>
+            
+          <!-- ===== FIXED ALBUM STRUCTURE ===== -->
+
+          <!-- PAGE 1 - 2 photos per page side for consistency -->
+          <div class="album-page active" data-page="1">
+            <div class="page-left">
+              <div class="polaroid">
+                <div class="polaroid-photo">
+                  <img src="assets/img1.jpg" alt="Under the Moonlight">
+                </div>
+                <div class="polaroid-caption">Under the Moonlight</div>
+            </div>
+        </div>
+    
+          <div class="page-right">
+            <div class="polaroid">
+              <div class="polaroid-photo">
+                  <img src="assets/img2.jpg" alt="A Walk in the Park">
+              </div>
+            <div class="polaroid-caption">Out For A Date</div>
+        </div>
+    </div>
+</div>
+
+          <!-- PAGE 2 -->
+          <div class="album-page" data-page="2">
+            <div class="page-left">
+              <div class="polaroid">
+                <div class="polaroid-photo">
+                  <img src="assets/img3.jpg" alt="Sand, sun, and smiles">
+                </div>
+              <div class="polaroid-caption">Sun, and Smiles</div>
+            </div>
+          </div>
+    
+    <div class="page-right">
+        <div class="polaroid">
+            <div class="polaroid-photo">
+                <img src="assets/img4.jpg" alt="Cozy winter moments">
+            </div>
+            <div class="polaroid-caption">Cute Moments</div>
+            <div class="photo-date"></div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="album-page" data-page="3">
+    <div class="page-left">
+        <div class="polaroid">
+            <div class="polaroid-photo">
+                <img src="assets/img5.jpg" alt="Dancing the night away">
+            </div>
+            <div class="polaroid-caption">Matcha Lady</div>
+            <div class="photo-date"></div>
+        </div>
+    </div>
+    
+    <div class="page-right">
+        <div class="polaroid">
+            <div class="polaroid-photo">
+                <img src="assets/img6.jpg" alt="Our favorite spot">
+            </div>
+            <div class="polaroid-caption">My Dear, My Love</div>
+            <div class="photo-date"></div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="album-page" data-page="4">
+    <div class="page-left">
+        <div class="polaroid">
+            <div class="polaroid-photo">
+                <img src="assets/img7.jpg" alt="To new heights together">
+            </div>
+            <div class="polaroid-caption">Flowers For Her</div>
+            <div class="photo-date">4</div>
+        </div>
+    </div>
+    
+    <div class="page-right">
+        <div class="polaroid">
+            <div class="polaroid-photo">
+                <img src="assets/img8.jpg" alt="Forever and always">
+            </div>
+            <div class="polaroid-caption">Distanced with Love</div>
+            <div class="photo-date"></div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 5 - Last page with note -->
+<div class="album-page" data-page="5">
+    <div class="page-left">
+        <!-- Empty page or add another photo -->
+    </div>
+    
+    <div class="page-right">
+        <div class="album-note">
+            <h3>More memories to come...</h3>
+            <p>Every moment with you is a treasure worth capturing.</p>
+            <p>You are always beautiful when you smile.</p>
+            <div class="note-heart">💕</div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <!-- View Mode Controls -->
+        <div class="view-controls">
+            <button class="view-btn active" data-view="album">
+                <span class="view-icon">📖</span>
+                <span class="view-label">Album</span>
+            </button>
+            <button class="view-btn" data-view="grid">
+                <span class="view-icon">▦</span>
+                <span class="view-label">Grid</span>
+            </button>
+            <button class="view-btn" data-view="slideshow">
+                <span class="view-icon">▶</span>
+                <span class="view-label">Slideshow</span>
+            </button>
+        </div>
+
+        <!-- Grid View -->
+        <div class="grid-view" style="display: none;">
+            <div class="grid-gallery"></div>
+        </div>
+
+        <!-- Slideshow View -->
+        <div class="slideshow-view" style="display: none;">
+            <div class="slideshow-container">
+                <img class="slideshow-photo" src="" alt="">
+                <div class="slideshow-caption"></div>
+                <button class="slideshow-control prev">❮</button>
+                <button class="slideshow-control next">❯</button>
+                <button class="slideshow-play">▶</button>
+            </div>
+        </div>
+
+        <!-- Photo Modal -->
+        <div id="photoModal" class="photo-modal">
+            <div class="modal-content">
+                <button class="modal-close">×</button>
+                <img id="modalImage" src="" alt="">
+                <div id="modalCaption"></div>
             </div>
         </div>
     </div>
