@@ -29,10 +29,10 @@ $(document).ready(function() {
         btnReset: $('#reset'),
         
         // Music
-        musicToggle: $('#musicToggle'),
-        bgMusic: $('#bgMusic')[0],
-        playIcon: $('.play-icon'),
-        pauseIcon: $('.pause-icon'),
+        musicToggle: $("#musicToggle"),
+        bgMusic: $("#bgm-audio")[0],
+        playIcon: $(".play-icon"),
+        pauseIcon: $(".pause-icon"),
         
         // Album
         prevPage: $('#prevPage'),
@@ -93,38 +93,25 @@ $(document).ready(function() {
      * Toggle background music play/pause
      */
     function toggleMusic() {
-        if (State.musicPlaying) {
-            Elements.bgMusic.pause();
-            Elements.playIcon.show();
-            Elements.pauseIcon.hide();
-            State.musicPlaying = false;
-        } else {
-            // Handle autoplay restrictions gracefully
-            Elements.bgMusic.play().catch(err => {
-                console.warn('Music autoplay blocked by browser:', err);
-            });
-            Elements.playIcon.hide();
-            Elements.pauseIcon.show();
-            State.musicPlaying = true;
+    if (State.musicPlaying) {
+        // Pause music
+        Elements.bgMusic.pause();
+        Elements.playIcon.show();
+        Elements.pauseIcon.hide();
+        State.musicPlaying = false;
+    } else {
+        // Play music
+        Elements.bgMusic.play().catch(err => {
+            console.warn('Music autoplay blocked by browser:', err);
+            // Show user-friendly message
+            alert('Please click the music button again to start playback');
+        });
+        Elements.playIcon.hide();
+        Elements.pauseIcon.show();
+        State.musicPlaying = true;
         }
     }
-
     Elements.musicToggle.on('click', toggleMusic);
-
-    function enableMusicOnce() {
-    bgMusic.play().then(() => {
-        musicPlaying = true;
-        $(".play-icon").hide();
-        $(".pause-icon").show();
-    }).catch(() => {
-        console.log("Autoplay prevented.");
-    });
-
-        $(document).off("click", enableMusicOnce);
-    }
-
-    $(document).on("click", enableMusicOnce);
-
 
     
     /* ==========================================
