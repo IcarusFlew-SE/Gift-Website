@@ -111,6 +111,21 @@ $(document).ready(function() {
 
     Elements.musicToggle.on('click', toggleMusic);
 
+    function enableMusicOnce() {
+    bgMusic.play().then(() => {
+        musicPlaying = true;
+        $(".play-icon").hide();
+        $(".pause-icon").show();
+    }).catch(() => {
+        console.log("Autoplay prevented.");
+    });
+
+        $(document).off("click", enableMusicOnce);
+    }
+
+    $(document).on("click", enableMusicOnce);
+
+
     
     /* ==========================================
        ENVELOPE & LETTER ANIMATIONS
